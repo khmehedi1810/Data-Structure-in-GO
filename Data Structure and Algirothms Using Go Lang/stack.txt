@@ -1,0 +1,82 @@
+package main
+
+import (
+	"fmt"
+)
+
+const size = 5
+
+var stack [size]int
+var top = -1
+
+func main() {
+	fmt.Println("Welcome to the world of Stack")
+	fmt.Println("=============================")
+	fmt.Println("--------------Menu-----------")
+	fmt.Println("=============================")
+	fmt.Println("1. Add element on Stack")
+	fmt.Println("2. Delete Elemnnt from Array")
+	fmt.Println("3. Pick Top Element from Array")
+	fmt.Println("4. Show All The Element")
+
+	var n, b int
+
+	fmt.Println("Choose an option")
+	fmt.Scanf("%d", &n)
+
+	switch n {
+	case 1:
+		fmt.Println("Enter the data that you want to add in your stack")
+		fmt.Scanf("%d", &b)
+		push(b)
+	case 2:
+		pop()
+	case 3:
+		peek()
+	default:
+		display()
+	}
+
+}
+
+func push(a int) {
+
+	if top == size-1 {
+		fmt.Println("Stack is OverFlow")
+	} else {
+		top++
+		stack[top] = a
+	}
+	display()
+}
+
+func pop() {
+	if top == -1 {
+		fmt.Println("Stack is Underflow")
+	} else {
+		top--
+	}
+	fmt.Println(stack)
+}
+
+func peek() {
+	if top == -1 {
+		fmt.Println("Stack is Underflow")
+	} else {
+		var n = stack[top]
+		fmt.Println("Top element of stack is:", n)
+	}
+	main()
+}
+
+func display() {
+	// if top == -1 {
+	// 	fmt.Println("Stack is UnderFlow")
+	// } else {
+	// 	for i := top; i >= 0; i-- {
+	// 		fmt.Printf("%d ", stack[i])
+	// 	}
+	// }
+	fmt.Println(stack)
+	main()
+}
